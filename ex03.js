@@ -9,7 +9,7 @@ Create a function named numberOfVowels that will receive a string and return the
 const vowels = ['a', 'e', 'i', 'o', 'u'];
 const numberOfVowels = function (data) {
   let count = 0;
-  [...data].forEach((letter) => {
+  [...data].filter((letter) => {
     vowels.forEach((vowel) => {
       letter === vowel && count++;
     });
