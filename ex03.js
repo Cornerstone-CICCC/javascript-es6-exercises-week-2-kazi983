@@ -6,13 +6,19 @@ Instruction
 Create a function named numberOfVowels that will receive a string and return the number of vowels in that string.
 
 */
-
+const vowels = ['a', 'e', 'i', 'o', 'u'];
 const numberOfVowels = function (data) {
-  // Put your solution here
+  let count = 0;
+  [...data].forEach((letter) => {
+    vowels.forEach((vowel) => {
+      letter === vowel && count++;
+    });
+  });
+  return count;
 };
 
-console.log(numberOfVowels("orange")); // 3
-console.log(numberOfVowels("cornerstone college")); // 7
-console.log(numberOfVowels("aeiou")); // 5
+console.log(numberOfVowels('orange')); // 3
+console.log(numberOfVowels('cornerstone college')); // 7
+console.log(numberOfVowels('aeiou')); // 5
 
 module.exports = numberOfVowels;
