@@ -9,31 +9,36 @@ Not sure where to get started? It might be useful to start by creating a variabl
 */
 
 const checkAir = function (samples, threshold) {
-  // Code here!
+  const dirtyCount = samples.reduce(
+    (count, sample) => (sample === 'dirty' ? count + 1 : count),
+    0,
+  );
+
+  return dirtyCount / samples.length > threshold ? 'Polluted' : 'Clean';
 };
 
 console.log(
   checkAir(
     [
-      "clean",
-      "clean",
-      "dirty",
-      "clean",
-      "dirty",
-      "clean",
-      "clean",
-      "dirty",
-      "clean",
-      "dirty",
+      'clean',
+      'clean',
+      'dirty',
+      'clean',
+      'dirty',
+      'clean',
+      'clean',
+      'dirty',
+      'clean',
+      'dirty',
     ],
-    0.3
-  )
+    0.3,
+  ),
 ); // Polluted
 
-console.log(checkAir(["dirty", "dirty", "dirty", "dirty", "clean"], 0.25)); // Polluted
+console.log(checkAir(['dirty', 'dirty', 'dirty', 'dirty', 'clean'], 0.25)); // Polluted
 
 console.log(
-  checkAir(["clean", "dirty", "clean", "dirty", "clean", "dirty", "clean"], 0.9)
+  checkAir(['clean', 'dirty', 'clean', 'dirty', 'clean', 'dirty', 'clean'], 0.9),
 ); // Clean
 
 module.exports = checkAir;
