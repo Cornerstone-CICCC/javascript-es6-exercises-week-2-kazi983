@@ -9,12 +9,12 @@ Create a function named sumLargestNumbers that will receive an array of numbers 
 const sumLargestNumbers = function (data) {
   let numFirstLargest = 0;
   let numSecondLargest = 0;
-  for (const num of data) {
+  data.forEach((num) => {
     if (num > numFirstLargest) numFirstLargest = num;
-  }
-  for (const num of data) {
+  });
+  data.forEach((num) => {
     if (num < numFirstLargest && num > numSecondLargest) numSecondLargest = num;
-  }
+  });
   return numFirstLargest + numSecondLargest;
 };
 
