@@ -18,11 +18,27 @@ Use some sort of looping. Do Not use String.prototype.replace
 */
 
 const urlEncode = function (text) {
-  // Put your solution here
+  let cleanText = text;
+
+  let i = 0;
+  while (cleanText[i] === ' ') {
+    cleanText = cleanText.slice(i + 1, cleanText.length);
+    i++;
+  }
+
+  i = cleanText.length - 1;
+  while (cleanText[i] === ' ') {
+    cleanText = cleanText.slice(0, cleanText.length - 1);
+    i--;
+  }
+
+  const replaced = [...cleanText].map((letter) => (letter === ' ' ? '%20' : letter));
+
+  return replaced.join('');
 };
 
-console.log(urlEncode("cornerstone college")); //cornerstone%20college
-console.log(urlEncode(" cornerstone college ")); //cornerstone%20college
-console.log(urlEncode("blue is greener than purple for sure")); //blue%20is%20greener%20than%20purple%20for%20sure
+console.log(urlEncode('cornerstone college')); //cornerstone%20college
+console.log(urlEncode(' cornerstone college ')); //cornerstone%20college
+console.log(urlEncode('blue is greener than purple for sure')); //blue%20is%20greener%20than%20purple%20for%20sure
 
 module.exports = urlEncode;
