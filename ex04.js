@@ -6,7 +6,16 @@ Create a function named instructorWithLongestName that will receive an array of 
 */
 
 const instructorWithLongestName = function (instructors) {
-  // Put your solution here
+  const res = {name: ''};
+
+  instructors.forEach((e)=>{
+    if (e.name.length > res.name.length){
+      res.name = e.name;
+      res.course = e.course;
+    }
+  })
+  
+  return res;
 };
 
 console.log(
