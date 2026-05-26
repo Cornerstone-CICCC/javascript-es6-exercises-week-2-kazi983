@@ -19,22 +19,23 @@ Use some sort of looping. Do Not use String.prototype.replace
 
 const urlEncode = function (text) {
   let cleanText = text;
+  let res = '';
 
-  let i = 0;
-  while (cleanText[i] === ' ') {
+  for (let i = 0; cleanText[i] === ' '; i++) {
     cleanText = cleanText.slice(i + 1, cleanText.length);
     i++;
   }
 
-  i = cleanText.length - 1;
-  while (cleanText[i] === ' ') {
+  for (let i = cleanText.length - 1; cleanText[i] === ' '; i--) {
     cleanText = cleanText.slice(0, cleanText.length - 1);
     i--;
   }
 
-  const replaced = [...cleanText].map((letter) => (letter === ' ' ? '%20' : letter));
+  const replaced = [...cleanText].forEach((letter) =>
+    letter === ' ' ? (res += '%20') : (res += letter),
+  );
 
-  return replaced.join('');
+  return res;
 };
 
 console.log(urlEncode('cornerstone college')); //cornerstone%20college
