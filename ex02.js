@@ -7,12 +7,21 @@ Create a function named conditionalSum that will be given an array of numbers an
 */
 
 const conditionalSum = function (values, condition) {
-  // Your code here
+  const res =
+    condition === 'even'
+      ? values.filter((n) => n % 2 === 0)
+      : condition === 'odd'
+        ? values.filter((n) => n % 2 === 1)
+        : () => {
+            throw new Error('Invalid condition');
+          };
+
+  return res.reduce((sum, n) => sum + n, 0);
 };
 
-console.log(conditionalSum([1, 2, 3, 4, 5], "even")); // 6
-console.log(conditionalSum([1, 2, 3, 4, 5], "odd")); // 9
-console.log(conditionalSum([13, 88, 12, 44, 99], "even")); // 144
-console.log(conditionalSum([], "odd")); // 0
+console.log(conditionalSum([1, 2, 3, 4, 5], 'even')); // 6
+console.log(conditionalSum([1, 2, 3, 4, 5], 'odd')); // 9
+console.log(conditionalSum([13, 88, 12, 44, 99], 'even')); // 144
+console.log(conditionalSum([], 'odd')); // 0
 
 module.exports = conditionalSum;
