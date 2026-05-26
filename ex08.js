@@ -9,7 +9,17 @@ Create a function named repeatNumbers that will return a string with each of the
 */
 
 const repeatNumbers = function (data) {
-  // Put your solution here
+  const repeatedData = data.map((e) => {
+    let repeated = '';
+
+    for (let i = 1; i <= e[1]; i++) {
+      repeated += [e[0]];
+    }
+
+    return repeated;
+  });
+
+  return repeatedData.join(', ');
 };
 
 console.log(repeatNumbers([[1, 10]])); // 1111111111
@@ -17,14 +27,14 @@ console.log(
   repeatNumbers([
     [1, 2],
     [2, 3],
-  ])
+  ]),
 ); // 11, 222
 console.log(
   repeatNumbers([
     [10, 4],
     [34, 6],
     [92, 2],
-  ])
+  ]),
 ); // 10101010, 343434343434, 9292
 
 module.exports = repeatNumbers;
