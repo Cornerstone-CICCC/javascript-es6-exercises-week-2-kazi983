@@ -22,8 +22,27 @@ Nickel (5¢)
 Penny (1¢)
 */
 
+const denominations = [
+  { name: 'twentyDollars', value: 2000 },
+  { name: 'tenDollars', value: 1000 },
+  { name: 'fiveDollars', value: 500 },
+  { name: 'twoDollars', value: 200 },
+  { name: 'oneDollar', value: 100 },
+  { name: 'quarter', value: 25 },
+  { name: 'dime', value: 10 },
+  { name: 'nickel', value: 5 },
+  { name: 'penny', value: 1 },
+];
+
 const calculateChange = function (total, cash) {
-  // Your code here
+  let restChangeInt = cash - total;
+  return denominations.reduce((change, denomination) => {
+    if (restChangeInt > denomination.value) {
+      change[denomination.name] = parseInt(restChangeInt / denomination.value);
+      restChangeInt = restChangeInt % denomination.value;
+    }
+    return change;
+  }, {});
 };
 
 console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }
