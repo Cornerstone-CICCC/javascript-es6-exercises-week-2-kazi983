@@ -23,12 +23,10 @@ const urlEncode = function (text) {
 
   for (let i = 0; cleanText[i] === ' '; i++) {
     cleanText = cleanText.slice(i + 1, cleanText.length);
-    i++;
   }
 
   for (let i = cleanText.length - 1; cleanText[i] === ' '; i--) {
-    cleanText = cleanText.slice(0, cleanText.length - 1);
-    i--;
+    cleanText = cleanText.slice(0, i);
   }
 
   const replaced = [...cleanText].forEach((letter) =>
