@@ -1,3 +1,5 @@
+const camelCase = require('./ex09');
+
 /*Caze Maker II
 We will still be given an input string to convert. However, this time, we'll also be given a casing style to work with. The following code block will describe all the casing styles to support. We may also receive an array of casing styles, and each of these should be applied.
 
@@ -15,17 +17,62 @@ For more information on casing styles, read Wikipedia's Special Case Styles for 
 
 */
 
-const makeCaze = function (input, caze) {
-  // Put your solution here
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+const toCamelCase = camelCase;
+
+const toPascalCase = (input) => {
+  const camel = camelCase(input);
+  return camel[0].toUpperCase() + camel.slice(1);
 };
 
-console.log(makeCaze("this is a string", "camel")); // thisIsAString
-console.log(makeCaze("this is a string", "pascal")); // ThisIsAString
-console.log(makeCaze("this is a string", "snake")); // this_is_a_string
-console.log(makeCaze("this is a string", "kebab")); // this-is-a-string
-console.log(makeCaze("this is a string", "title")); // This Is A String
-console.log(makeCaze("this is a string", "vowel")); // thIs Is A strIng
-console.log(makeCaze("this is a string", "consonant")); // THiS iS a STRiNG
-console.log(makeCaze("this is a string", ["upper", "snake"])); // THIS_IS_A_STRING
+const toSnakeCase = (input) => input.split(' ').join('_');
+
+const toKebabCase = (input) => input.split(' ').join('-');
+
+const toTitleCase = (input) =>
+  input
+    .split(' ')
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ');
+
+const toVowelCase = (input) =>
+  [...input]
+    .map((letter) => (vowels.includes(letter) ? letter.toUpperCase() : letter))
+    .join('');
+
+const toConsonantCase = (input) =>
+  [...input]
+    .map((letter) => (vowels.includes(letter) ? letter : letter.toUpperCase()))
+    .join('');
+
+const makeCaze = function (input, caze) {
+  switch (caze) {
+    case 'camel':
+      return toCamelCase(input);
+    case 'pascal':
+      return toPascalCase(input);
+    case 'snake':
+      return toSnakeCase(input);
+    case 'kebab':
+      return toKebabCase(input);
+    case 'title':
+      return toTitleCase(input);
+    case 'vowel':
+      return toVowelCase(input);
+    case 'consonant':
+      return toConsonantCase(input);
+      break;
+  }
+};
+
+console.log(makeCaze('this is a string', 'camel')); // thisIsAString
+console.log(makeCaze('this is a string', 'pascal')); // ThisIsAString
+console.log(makeCaze('this is a string', 'snake')); // this_is_a_string
+console.log(makeCaze('this is a string', 'kebab')); // this-is-a-string
+console.log(makeCaze('this is a string', 'title')); // This Is A String
+console.log(makeCaze('this is a string', 'vowel')); // thIs Is A strIng
+console.log(makeCaze('this is a string', 'consonant')); // THiS iS a STRiNG
+console.log(makeCaze('this is a string', ['upper', 'snake'])); // THIS_IS_A_STRING
 
 module.exports = makeCaze;
