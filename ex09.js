@@ -9,11 +9,22 @@ Create a function named camelCase that will convert a string to camel case, and 
 */
 
 const camelCase = function (input) {
-  // Your code here
+  let convertEnabled = false;
+  return [...input].reduce((camelArray, letter) => {
+    if (convertEnabled) {
+      convertEnabled = false;
+      return camelArray + letter.toUpperCase();
+    } else if (letter === ' ') {
+      convertEnabled = true;
+      return camelArray;
+    } else {
+      return camelArray + letter;
+    }
+  }, '');
 };
 
-console.log(camelCase("this is a string")); // thisIsAString
-console.log(camelCase("loopy cornerstone")); //loopyCornerstone
-console.log(camelCase("supercalifragalisticexpialidocious")); // supercalifragalisticexpialidocious
+console.log(camelCase('this is a string')); // thisIsAString
+console.log(camelCase('loopy cornerstone')); //loopyCornerstone
+console.log(camelCase('supercalifragalisticexpialidocious')); // supercalifragalisticexpialidocious
 
 module.exports = camelCase;
