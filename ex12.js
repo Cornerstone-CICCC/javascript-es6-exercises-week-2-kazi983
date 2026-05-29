@@ -21,42 +21,64 @@ This one is a doozy! We might want to start by creating a helper function called
 */
 
 const chooseRecipe = function (bakeryA, bakeryB, recipes) {
-  // Code here!
+  let recipeName = '';
+
+  recipes.forEach((recipe) => {
+    let countIngredient = 0;
+
+    for (let i = 0; i < recipe.ingredients.length; i++) {
+      if (bakeryA.includes(recipe.ingredients[i])) {
+        countIngredient++;
+      }
+
+      if (bakeryB.includes(recipe.ingredients[i])) {
+        countIngredient++;
+      }
+    }
+
+    if (countIngredient === 2) {
+      recipeName = recipe.name;
+
+      return;
+    }
+  });
+
+  return recipeName;
 };
 
-let bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];
-let bakeryB = ["milk", "butter", "cream cheese"];
+let bakeryA = ['saffron', 'eggs', 'tomato paste', 'coconut', 'custard'];
+let bakeryB = ['milk', 'butter', 'cream cheese'];
 let recipes = [
   {
-    name: "Coconut Sponge Cake",
-    ingredients: ["coconut", "cake base"],
+    name: 'Coconut Sponge Cake',
+    ingredients: ['coconut', 'cake base'],
   },
   {
-    name: "Persian Cheesecake",
-    ingredients: ["saffron", "cream cheese"],
+    name: 'Persian Cheesecake',
+    ingredients: ['saffron', 'cream cheese'],
   },
   {
-    name: "Custard Surprise",
-    ingredients: ["custard", "ground beef"],
+    name: 'Custard Surprise',
+    ingredients: ['custard', 'ground beef'],
   },
 ];
 
 console.log(chooseRecipe(bakeryA, bakeryB, recipes)); //Persian Cheesecake
 
-bakeryA = ["potatoes", "bay leaf", "raisins"];
-bakeryB = ["red bean", "dijon mustard", "apples"];
+bakeryA = ['potatoes', 'bay leaf', 'raisins'];
+bakeryB = ['red bean', 'dijon mustard', 'apples'];
 recipes = [
   {
-    name: "Potato Ganache",
-    ingredients: ["potatoes", "chocolate"],
+    name: 'Potato Ganache',
+    ingredients: ['potatoes', 'chocolate'],
   },
   {
-    name: "Sweet Fish",
-    ingredients: ["anchovies", "honey"],
+    name: 'Sweet Fish',
+    ingredients: ['anchovies', 'honey'],
   },
   {
     name: "Nima's Famous Dijon Raisins",
-    ingredients: ["dijon mustard", "raisins"],
+    ingredients: ['dijon mustard', 'raisins'],
   },
 ];
 
