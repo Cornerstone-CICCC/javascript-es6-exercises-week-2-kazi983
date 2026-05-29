@@ -47,23 +47,41 @@ const toConsonantCase = (input) =>
     .join('');
 
 const makeCaze = function (input, caze) {
-  switch (caze) {
-    case 'camel':
-      return toCamelCase(input);
-    case 'pascal':
-      return toPascalCase(input);
-    case 'snake':
-      return toSnakeCase(input);
-    case 'kebab':
-      return toKebabCase(input);
-    case 'title':
-      return toTitleCase(input);
-    case 'vowel':
-      return toVowelCase(input);
-    case 'consonant':
-      return toConsonantCase(input);
-      break;
-  }
+  let cazes = Array.isArray(caze) ? caze : [caze];
+
+  cazes.forEach((caze) => {
+    switch (caze) {
+      case 'camel':
+        input = toCamelCase(input);
+        break;
+      case 'pascal':
+        input = toPascalCase(input);
+        break;
+      case 'snake':
+        input = toSnakeCase(input);
+        break;
+      case 'kebab':
+        input = toKebabCase(input);
+        break;
+      case 'title':
+        input = toTitleCase(input);
+        break;
+      case 'vowel':
+        input = toVowelCase(input);
+        break;
+      case 'consonant':
+        input = toConsonantCase(input);
+        break;
+      case 'upper':
+        input = input.toUpperCase();
+        break;
+      case 'lower':
+        input = input.toLowerCase();
+        break;
+      default:
+    }
+  });
+  return input;
 };
 
 console.log(makeCaze('this is a string', 'camel')); // thisIsAString
