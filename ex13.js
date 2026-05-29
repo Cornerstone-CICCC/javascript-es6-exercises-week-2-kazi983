@@ -9,11 +9,38 @@ Create a function named talkingCalendar that takes in a date string with the for
 */
 
 const talkingCalendar = function (date) {
-  // Your code here
+  date = date.split('/');
+  const yyyy = date[0];
+  const mm = date[1];
+  const dd = date[2];
+
+  // prettier-ignore
+  const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+
+  const cleanDd = dd[0] === '0' ? dd.slice(1) : dd;
+
+  let suffix = 'th';
+  switch (cleanDd) {
+    case '1':
+      suffix = 'st';
+      break;
+    case '2':
+      suffix = 'nd';
+      break;
+    case '3':
+      suffix = 'rd';
+      break;
+    default:
+  }
+
+  return `${months[Number(mm) - 1]} ${cleanDd}${suffix}, ${yyyy}`;
 };
 
-console.log(talkingCalendar("2017/12/02")); // December 2nd, 2017
-console.log(talkingCalendar("2007/11/11")); // November 11th, 2007
-console.log(talkingCalendar("1987/08/24")); // August 24th, 1987
+console.log(talkingCalendar('2017/12/02')); // December 2nd, 2017
+console.log(talkingCalendar('2007/11/11')); // November 11th, 2007
+console.log(talkingCalendar('1987/08/24')); // August 24th, 1987
 
 module.exports = talkingCalendar;
