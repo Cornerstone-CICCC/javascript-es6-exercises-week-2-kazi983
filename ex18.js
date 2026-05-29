@@ -23,16 +23,36 @@ Create a function named squareCode that will receive a message, and return the s
 */
 
 const squareCode = function (message) {
-  // Put your solution here
+  // Remove all spaces
+  message = message.split(' ').join('');
+
+  // Make the message into square and put that into a new array
+  const sliceIndex = Math.ceil(Math.sqrt(message.length));
+
+  const squareMessages = [];
+
+  while (message) {
+    squareMessages.push(message.slice(0, sliceIndex));
+    message = message.slice(sliceIndex);
+  }
+
+  // Concatenate vertically read characters with spaces and return it
+  return squareMessages
+    .reduce((arr, cur) => {
+      for (let i = 0; i < cur.length; i++) {
+        if (arr[i] === undefined) arr[i] = '';
+        arr[i] += cur[i];
+      }
+      return arr;
+    }, [])
+    .join(' ');
 };
 
-console.log(squareCode("chill out")); // clu hlt io
-console.log(squareCode("feed the dog")); // fto ehg ee dd
-console.log(squareCode("have a nice day")); // hae and via ecy
+console.log(squareCode('chill out')); // clu hlt io
+console.log(squareCode('feed the dog')); // fto ehg ee dd
+console.log(squareCode('have a nice day')); // hae and via ecy
 console.log(
-  squareCode(
-    "if man was meant to stay on the ground god would have given us roots"
-  )
+  squareCode('if man was meant to stay on the ground god would have given us roots'),
 ); // imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau
 
 module.exports = squareCode;
