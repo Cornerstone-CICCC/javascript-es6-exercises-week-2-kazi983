@@ -46,6 +46,35 @@ const toConsonantCase = (input) =>
     .map((letter) => (vowels.includes(letter) ? letter : letter.toUpperCase()))
     .join('');
 
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+const toCamelCase = camelCase;
+
+const toPascalCase = (input) => {
+  const camel = camelCase(input);
+  return camel[0].toUpperCase() + camel.slice(1);
+};
+
+const toSnakeCase = (input) => input.split(' ').join('_');
+
+const toKebabCase = (input) => input.split(' ').join('-');
+
+const toTitleCase = (input) =>
+  input
+    .split(' ')
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ');
+
+const toVowelCase = (input) =>
+  [...input]
+    .map((letter) => (vowels.includes(letter) ? letter.toUpperCase() : letter))
+    .join('');
+
+const toConsonantCase = (input) =>
+  [...input]
+    .map((letter) => (vowels.includes(letter) ? letter : letter.toUpperCase()))
+    .join('');
+
 const makeCaze = function (input, caze) {
   let cazes = Array.isArray(caze) ? caze : [caze];
 
@@ -84,6 +113,14 @@ const makeCaze = function (input, caze) {
   return input;
 };
 
+console.log(makeCaze('this is a string', 'camel')); // thisIsAString
+console.log(makeCaze('this is a string', 'pascal')); // ThisIsAString
+console.log(makeCaze('this is a string', 'snake')); // this_is_a_string
+console.log(makeCaze('this is a string', 'kebab')); // this-is-a-string
+console.log(makeCaze('this is a string', 'title')); // This Is A String
+console.log(makeCaze('this is a string', 'vowel')); // thIs Is A strIng
+console.log(makeCaze('this is a string', 'consonant')); // THiS iS a STRiNG
+console.log(makeCaze('this is a string', ['upper', 'snake'])); // THIS_IS_A_STRING
 console.log(makeCaze('this is a string', 'camel')); // thisIsAString
 console.log(makeCaze('this is a string', 'pascal')); // ThisIsAString
 console.log(makeCaze('this is a string', 'snake')); // this_is_a_string
