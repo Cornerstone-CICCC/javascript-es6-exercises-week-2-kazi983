@@ -7,8 +7,8 @@ Create a function named sumLargestNumbers that will receive an array of numbers 
 */
 
 const sumLargestNumbers = function (data) {
-  let numFirstLargest = 0;
-  let numSecondLargest = 0;
+  let numFirstLargest = 0; // Feedback: initialize from the data or -Infinity so arrays with negative numbers still work.
+  let numSecondLargest = 0; // Feedback: this should not start at 0 unless all inputs are guaranteed positive.
   data.forEach((num) => {
     if (num > numFirstLargest) numFirstLargest = num;
   });

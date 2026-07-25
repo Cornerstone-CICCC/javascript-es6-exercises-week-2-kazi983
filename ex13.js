@@ -24,13 +24,13 @@ const talkingCalendar = function (date) {
 
   let suffix = 'th';
   switch (cleanDd) {
-    case '1':
+    case '1': // Feedback: 11, 12, and 13 are special cases and should keep the "th" suffix.
       suffix = 'st';
       break;
-    case '2':
+    case '2': // Feedback: only 2, 22 should be "nd"; 12 should be "12th".
       suffix = 'nd';
       break;
-    case '3':
+    case '3': // Feedback: only 3, 23 should be "rd"; 13 should be "13th".
       suffix = 'rd';
       break;
     default:

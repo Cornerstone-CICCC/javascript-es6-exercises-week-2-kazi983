@@ -14,7 +14,7 @@ const checkAir = function (samples, threshold) {
     0,
   );
 
-  return dirtyCount / samples.length > threshold ? 'Polluted' : 'Clean';
+  return dirtyCount / samples.length > threshold ? 'Polluted' : 'Clean'; // Feedback: use >= threshold because the air must be less than the threshold to be Clean.
 };
 
 console.log(

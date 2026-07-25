@@ -74,7 +74,7 @@ Create a function called queenThreat that will indicate whether or not the two q
  * @param {number[]} queen2 - The position of the second queen in the format [row, column].
  * @returns {number[][]} An 8x8 chessboard where queens are represented by 1.
  */
-const generateBoard = (queen1, queen2) => {
+const generateBoard = (queen1, queen2) => { // Feedback: export both functions at the end with module.exports = { generateBoard, queenThreat }.
   const board = [];
   for (let i = 0; i < 8; i++) {
     board.push([0, 0, 0, 0, 0, 0, 0, 0]);

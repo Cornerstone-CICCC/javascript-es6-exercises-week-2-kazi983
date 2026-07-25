@@ -17,7 +17,7 @@ For more information on casing styles, read Wikipedia's Special Case Styles for 
 
 */
 
-const vowels = ['a', 'e', 'i', 'o', 'u'];
+const vowels = ['a', 'e', 'i', 'o', 'u']; // Feedback: this block is duplicated below; redeclaring const names causes a syntax error.
 
 const toCamelCase = camelCase;
 
@@ -46,7 +46,7 @@ const toConsonantCase = (input) =>
     .map((letter) => (vowels.includes(letter) ? letter : letter.toUpperCase()))
     .join('');
 
-const vowels = ['a', 'e', 'i', 'o', 'u'];
+const vowels = ['a', 'e', 'i', 'o', 'u']; // Feedback: remove the duplicate declarations so the file can run.
 
 const toCamelCase = camelCase;
 

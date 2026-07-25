@@ -23,10 +23,10 @@ Penny (1¢)
 */
 
 const denominations = [
-  { name: 'twentyDollars', value: 2000 },
-  { name: 'tenDollars', value: 1000 },
-  { name: 'fiveDollars', value: 500 },
-  { name: 'twoDollars', value: 200 },
+  { name: 'twentyDollars', value: 2000 }, // Feedback: expected property name is "twentyDollar" without the plural s.
+  { name: 'tenDollars', value: 1000 }, // Feedback: expected property name is "tenDollar".
+  { name: 'fiveDollars', value: 500 }, // Feedback: expected property name is "fiveDollar".
+  { name: 'twoDollars', value: 200 }, // Feedback: expected property name is "twoDollar".
   { name: 'oneDollar', value: 100 },
   { name: 'quarter', value: 25 },
   { name: 'dime', value: 10 },
@@ -37,7 +37,7 @@ const denominations = [
 const calculateChange = function (total, cash) {
   let restChangeInt = cash - total;
   return denominations.reduce((change, denomination) => {
-    if (restChangeInt > denomination.value) {
+    if (restChangeInt > denomination.value) { // Feedback: use >= so exact denomination matches, like 200 cents, are included.
       change[denomination.name] = parseInt(restChangeInt / denomination.value);
       restChangeInt = restChangeInt % denomination.value;
     }

@@ -17,7 +17,7 @@ const multiplicationTable = function (maxValue) {
     resTableArr.push(resArr);
   }
   return resTableArr.reduce(
-    (tableString, arr) => tableString + arr.join(' ') + '\n',
+    (tableString, arr) => tableString + arr.join(' ') + '\n', // Feedback: avoid adding "\n" after the last row; expected output has no trailing newline.
     '',
   );
 };
